@@ -18,8 +18,7 @@
       --radius: 12px;
       --max: 980px;
     }
-}
-    * { box-sizing: border-box; }
+* { box-sizing: border-box; }
     body {
       margin:0; font: 15px/1.45 system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
       background: var(--bg); color: var(--text);
@@ -32,14 +31,27 @@
     .wrap { max-width: var(--max); margin: 0 auto; padding: 16px; }
 
     h1 { margin:0; font-size: 18px; letter-spacing: .2px; }
-    .bar {
-      display:flex; gap:12px; align-items:center; justify-content:space-between;
-      flex-wrap:wrap;
+        .bar {
+      display:flex;
+      align-items:center;
+      gap:12px;
+      flex-wrap:nowrap;           /* keep everything on one line */
       margin-top: 10px;
     }
-    .tabs { display:flex; gap:8px; flex-wrap:wrap; margin:0; }
-    .controls { display:flex; gap:10px; align-items:center; flex-wrap:nowrap; }
-                    input[type="search"]{
+    .tabs {
+      display:flex;
+      gap:8px;
+      flex-wrap:nowrap;           /* keep Blesi + Kinns together */
+      margin:0;
+    }
+    .controls {
+      display:flex;
+      gap:10px;
+      align-items:center;
+      flex-wrap:nowrap;
+      margin-left:auto;           /* push search+clear to the right */
+    }
+input[type="search"]{
   flex: 1 1 auto;      /* take remaining space */
   width: auto;         /* override min(520px, 88vw) */
   min-width: 0;        /* critical: allows shrinking on mobile */
@@ -121,6 +133,8 @@
       color: var(--muted);
     }
     .btn {
+      flex: 0 0 auto;
+      white-space: nowrap;
       border:1px solid var(--border);
       background: var(--panel);
       color: var(--text);
