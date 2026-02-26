@@ -38,16 +38,18 @@
       margin-top: 10px;
     }
     .tabs { display:flex; gap:8px; flex-wrap:wrap; margin:0; }
-    .controls { display:flex; gap:10px; align-items:center; flex-wrap:wrap; }
-                    input[type="search"] {
-      width: min(520px, 88vw);
-      padding: 10px 12px;
-      border-radius: 12px;
-      border:1px solid var(--border);
-      background: var(--panel);
-      color: var(--text);
-      outline: none;
-    }
+    .controls { display:flex; gap:10px; align-items:center; flex-wrap:nowrap; }
+                    input[type="search"]{
+  flex: 1 1 auto;      /* take remaining space */
+  width: auto;         /* override min(520px, 88vw) */
+  min-width: 0;        /* critical: allows shrinking on mobile */
+  padding: 10px 12px;
+  border-radius: 12px;
+  border:1px solid var(--border);
+  background: var(--panel);
+  color: var(--text);
+  outline: none;
+}
         .tab {
       border:1px solid var(--border);
       background: var(--chip);
