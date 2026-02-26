@@ -1,0 +1,257 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>MA Practice Question</title>
+  <style>
+    :root {
+      --bg: #ffffff;
+      --panel: #ffffff;
+      --panel2: #ffffff;
+      --text: #000000;
+      --muted: #333333;
+      --link: #0b63d1;
+      --border: #d0d7de;
+      --chip: #f6f8fa;
+      --shadow: 0 6px 18px rgba(0,0,0,.08);
+      --radius: 12px;
+      --max: 980px;
+    }
+}
+    * { box-sizing: border-box; }
+    body {
+      margin:0; font: 15px/1.45 system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      background: var(--bg); color: var(--text);
+    }
+    header {
+      position: sticky; top: 0; z-index: 10;
+      background: var(--bg);
+      border-bottom: 1px solid var(--border);
+    }
+    .wrap { max-width: var(--max); margin: 0 auto; padding: 16px; }
+
+    h1 { margin:0; font-size: 18px; letter-spacing: .2px; }
+    .bar {
+      display:flex; gap:12px; align-items:center; justify-content:space-between;
+      flex-wrap:wrap;
+      margin-top: 10px;
+    }
+    .tabs { display:flex; gap:8px; flex-wrap:wrap; margin:0; }
+    .controls { display:flex; gap:10px; align-items:center; flex-wrap:wrap; }
+                    input[type="search"] {
+      width: min(520px, 88vw);
+      padding: 10px 12px;
+      border-radius: 12px;
+      border:1px solid var(--border);
+      background: var(--panel);
+      color: var(--text);
+      outline: none;
+    }
+        .tab {
+      border:1px solid var(--border);
+      background: var(--chip);
+      color: var(--text);
+      padding: 8px 10px;
+      border-radius: 999px;
+      cursor:pointer;
+      user-select:none;
+    }
+    .tab[aria-selected="true"] {
+      background: var(--panel);
+      box-shadow: var(--shadow);
+    }
+    main .card {
+      background: var(--panel);
+      border:1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+      margin: 18px 0;
+    }
+    .card h2 {
+      margin:0;
+      padding: 14px 16px;
+      font-size: 15px;
+      border-bottom:1px solid var(--border);
+      background: var(--panel2);
+      display:flex; align-items:center; justify-content:space-between;
+      gap: 10px;
+    }
+    .count { color: var(--muted); font-weight: 500; font-size: 12px; }
+    .list {
+      padding: 8px;
+    }
+    .item {
+      display:flex; align-items:center; justify-content:space-between;
+      gap: 10px;
+      padding: 10px 10px;
+      border-radius: 12px;
+    }
+    .item:hover {
+      background: color-mix(in srgb, var(--chip) 70%, transparent);
+    }
+    a {
+      color: var(--link);
+      text-decoration: none;
+      flex: 1;
+    }
+    a:focus {
+      outline: 2px solid color-mix(in srgb, var(--link) 55%, transparent);
+      outline-offset: 2px;
+      border-radius: 10px;
+    }
+        .divider {
+      height: 12px;
+      border-radius: 999px;
+      margin: 10px 8px;
+      border: 1px solid var(--border);
+      background: var(--chip);
+    }
+    footer {
+      color: var(--muted);
+      padding: 24px 16px 38px;
+      text-align:center;
+    }
+    .hint {
+      margin-top: 6px;
+      font-size: 12px;
+      color: var(--muted);
+    }
+    .btn {
+      border:1px solid var(--border);
+      background: var(--panel);
+      color: var(--text);
+      padding: 10px 12px;
+      border-radius: 12px;
+      cursor:pointer;
+    }
+  </style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <h1>MA Practice Question</h1>
+    <div class="bar">
+      <div class="tabs" role="tablist" aria-label="Pools">
+        <div class="tab" role="tab" tabindex="0" aria-selected="true" data-tab="Blesi">Blesi</div>
+        <div class="tab" role="tab" tabindex="-1" aria-selected="false" data-tab="Kinns">Kinns</div>
+      </div>
+      <div class="controls">
+        <input id="q" type="search" placeholder="Search..." autocomplete="off" />
+        <button class="btn" id="clear" title="Clear search">Clear</button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="card">
+    <h2>
+      <span id="title">Blesi</span>
+      <span class="count" id="count"></span>
+    </h2>
+    <div class="list" id="list"></div>
+  </div>
+</main>
+
+<footer></footer>
+
+<script>
+  const DATA = {"Blesi": [{"type": "link", "title": "Blesi MA CH01: Health Care Team & Medical Environment 31Q", "url": "https://docs.google.com/forms/d/e/1FAIpQLSeLSLU8jlGTnSt1M8nH_FXGvmevTEkdih5k89H5Ghz5AuLuXw/viewform"}, {"type": "link", "title": "Blesi MA CH02: Professionalism 20Q", "url": "https://docs.google.com/forms/d/e/1FAIpQLSdD-AadvtHGZJOWrYIjtrm5rupUKixgdV08paVtErGTmFg3Uw/viewform"}, {"type": "link", "title": "Blesi MA CH03: Legal & Ethical Issues 26Q", "url": "https://docs.google.com/forms/d/e/1FAIpQLScAdvfbhfP06GusxCLvAFAwWKpK_gMVwGigY30uQE7e8N8Xfw/viewform"}, {"type": "link", "title": "Blesi MA CH04: Communication Skills 34Q", "url": "https://docs.google.com/forms/d/e/1FAIpQLScDmRwUgD6drJfot5G9URZeRJMrDjcmd4TqXImybg8gVaoa7g/viewform"}, {"type": "divider", "color": "#93C47D"}, {"type": "link", "title": "Blesi MA CH05: Medical Terminology 25Q", "url": "https://docs.google.com/forms/d/e/1FAIpQLSen8TJMYKioD184f-BQEREnASRDXKsDYuix85Qe-XGH0fQmKw/viewform"}, {"type": "link", "title": "Blesi MA CH06: Fundamental Body Structure 20Q", "url": "https://docs.google.com/forms/d/e/1FAIpQLSdnLVkkJapV-fI8CP2ZL4hav3dLLyvCwcpBwDGy6Z5hLEcNyQ/viewform"}, {"type": "link", "title": "Blesi MA CH07: The Nervous System 27Q", "url": "https://docs.google.com/forms/d/e/1FAIpQLSenPDO-oYmt0ACjvaDTKC8Gi_KMujyqqRgyx-2-GjYcyg2NOA/viewform"}, {"type": "link", "title": "Blesi MA CH08: The Senses 26Q", "url": "https://docs.google.com/forms/d/e/1FAIpQLScorTxKqQIQvd7Kr4PkNtZPTLGxSwQsF0VpAa8jMRirra8bkQ/viewform"}, {"type": "link", "title": "Blesi MA CH09: The Integumentary System 26Q", "url": "https://docs.google.com/forms/d/e/1FAIpQLSeZG0gJNilENhz-EKdU20TR8Y7kz2O7zPZatfbnjPYlmD4LOw/viewform"}, {"type": "link", "title": "Blesi MA CH10: The Skeletal System 30Q", "url": "https://docs.google.com/forms/d/e/1FAIpQLSeXe2FlT2R4TFVFNkGeYCfuKjpj86zItEA4qPJqR5x-cSHMkQ/viewform"}, {"type": "link", "title": "Blesi MA CH11: The Muscular System 33Q", "url": "https://docs.google.com/forms/d/e/1FAIpQLSfNQSyHZk9NXt2SMyj_8qnEDzvz8N6rNfiAj-FUJEL-dQy-bw/viewform"}, {"type": "link", "title": "Blesi MA CH12: The Respiratory System 20Q", "url": "https://docs.google.com/forms/d/e/1FAIpQLSesoXof7oX11cbZ57XBQEJWWRB1pucIShSChOvpTw6i9sSU4A/viewform"}, {"type": "link", "title": "Blesi MA CH13: The Circulatory System", "url": "https://docs.google.com/forms/d/e/1FAIpQLSdlxNIj-aniUoFbI2i0kn4cXfmVfp-LgYT-AGGDRL_Snif5mA/viewform"}, {"type": "link", "title": "Blesi MA CH14: The Immune System", "url": "https://docs.google.com/forms/d/e/1FAIpQLSdsZtOQI-mbBiTVXYaRuWq9koh8jHq7C5WIvvvQpvidyAe4vA/viewform"}, {"type": "link", "title": "Blesi MA CH15: The Digestive System", "url": "https://docs.google.com/forms/d/e/1FAIpQLSekV4e-EaikKfx-AxdVGjHhxIwGEVOFl-y92ImOlRtGwGh1dw/viewform"}, {"type": "link", "title": "Blesi MA CH16: The Urinary System", "url": "https://docs.google.com/forms/d/e/1FAIpQLSeQl7ljuKtj5SnVS3P-svQvte-wisjrXWjuDVsUdv7f031vDw/viewform"}, {"type": "link", "title": "Blesi MA CH17: The Endocrine System", "url": "https://docs.google.com/forms/d/e/1FAIpQLSc8C2uO5-2nPsoN9U7sEemNGW-ryvgXdMdmiFeWAo2DdC0w3A/viewform"}, {"type": "link", "title": "Blesi MA CH18: The Reproductive System", "url": "https://docs.google.com/forms/d/e/1FAIpQLSffEtOhwxvd7DktWEIrGKZHCFHQ6wOuwiIMHNECQ1GIzC854g/viewform"}, {"type": "divider", "color": "#6D9EEB"}, {"type": "link", "title": "Blesi MA CH19: Telephone Communications", "url": "https://docs.google.com/forms/d/e/1FAIpQLSdIKc8qYizCmkQ9yXUpmDoabLTiXeEaOgfwxuAyxrMELtaIlg/viewform"}, {"type": "link", "title": "Blesi MA CH20: Written Communications", "url": "https://docs.google.com/forms/d/e/1FAIpQLSfg-PLV4Ofxgl21UjAp2AbyroNzEtetEEpnZo7SXAfMptc5Lg/viewform"}, {"type": "link", "title": "Blesi MA CH21: Office Computers & Equipment", "url": "https://docs.google.com/forms/d/e/1FAIpQLSdQ5Bc7r5S7SusHQrF9pVHRdrFUEL092voocRj45Ycg_mAVbg/viewform"}, {"type": "link", "title": "Blesi MA CH22: Scheduling Appointments", "url": "https://docs.google.com/forms/d/e/1FAIpQLSdaJA3GElSn0ILRJeLiyWRZdcwq3-LEDpUVm4zu5Vo7IHlfGQ/viewform"}, {"type": "link", "title": "Blesi MA CH23: Medical Record Documentation Filing", "url": "https://docs.google.com/forms/d/e/1FAIpQLScmqHv-rBOMFEn4k7OwVIJbWU0O6SeoDwyUkuY5faVSQP4HWA/viewform"}, {"type": "link", "title": "Blesi MA CH24: Health Insurance", "url": "https://docs.google.com/forms/d/e/1FAIpQLSefr8nIpAZ1gW1tfobMPJkdQ0aWG3lM3M7HJVLDquGNqfAOSw/viewform"}, {"type": "link", "title": "Blesi MA CH25: Procedural & Diagnostic Coding", "url": "https://docs.google.com/forms/d/e/1FAIpQLSes4J_WSWPD2aHhb0jVqGh6T6h7VSGA7tmD_Cxw_jxTabBChQ/viewform"}, {"type": "link", "title": "Blesi MA CH26: Patient Accounts", "url": "https://docs.google.com/forms/d/e/1FAIpQLSdFtuROToo8sIZBkHnZ9-SIlUrSQFC7fElW8ZPGfVPTkeaIpw/viewform"}, {"type": "link", "title": "Blesi MA CH27: Preparing Insurance Claims", "url": "https://docs.google.com/forms/d/e/1FAIpQLSdvqsCPZTlJTzzUfQtqm5OFUXyiXMcpU00HW-QfGB0S7CUByA/viewform"}, {"type": "link", "title": "Blesi MA CH28: Patient Billing & Payments", "url": "https://docs.google.com/forms/d/e/1FAIpQLSeF9jutUaN-2lCeF1XQwU8xKAJI0b-8kgX8cEgUq5PM70r_Mw/viewform"}, {"type": "link", "title": "Blesi MA CH29: Banking Procedures", "url": "https://docs.google.com/forms/d/e/1FAIpQLSf40QkhHYM-AiFrdiGSE36XCbyzooPQUvlksSfNZxg-F4E5gw/viewform"}, {"type": "link", "title": "Blesi MA CH30: Accounting Procedures", "url": "https://docs.google.com/forms/d/e/1FAIpQLSeo5sT3umiS7WZHBmZpQpOOKT3utbHFnYCDiTgXmNxLvly-OA/viewform"}, {"type": "divider", "color": "#F1C232"}, {"type": "link", "title": "Blesi MA CH31: Infection Control & Asepsis", "url": "https://docs.google.com/forms/d/e/1FAIpQLSeFnnq9jA7uoxbkjUhkfXszzzTk-zztSW3Xp-pYiPIIZduSsA/viewform"}, {"type": "link", "title": "Blesi MA CH32: Medical History & Patient Screening", "url": "https://docs.google.com/forms/d/e/1FAIpQLSeYxRd-T3mTf8gKH6Bcb3ytBQ6Sb8Bd_8Yv0-VobbiZ0U06vw/viewform"}, {"type": "link", "title": "Blesi MA CH33: Body Measurements & Vital Signs", "url": "https://docs.google.com/forms/d/e/1FAIpQLSfKRRagI1Rvvl2irGk73jExEJiz2rsDagMX2K8TzXcIDmHgOQ/viewform"}, {"type": "link", "title": "Blesi MA CH34: Preparing for Examinations", "url": "https://docs.google.com/forms/d/e/1FAIpQLSe3k7LxdvwbeS2UZ9eEudRhWZaOC9Ppo3OXTNjAX2WzLuFPgw/viewform"}, {"type": "link", "title": "Blesi MA CH35: The Physical Exam", "url": "https://docs.google.com/forms/d/e/1FAIpQLSe4x-VBbWdfDKig3wy7cQ2XGRVyKrn4mO9JcrceiL2wyOiZgQ/viewform"}, {"type": "link", "title": "Blesi MA CH36: Specialty Examinations & Procedures", "url": "https://docs.google.com/forms/d/e/1FAIpQLSel41EYs-X6ciBGjqJT8oNIVjAR7WDTGxjg372HtYf4ifuueQ/viewform"}, {"type": "link", "title": "Blesi MA CH37: OBGYN Examinations", "url": "https://docs.google.com/forms/d/e/1FAIpQLSeRhK29l6xJg-56--srf0z7n8-QBnq0SRjvNHdmebt-dGbZ_w/viewform"}, {"type": "link", "title": "Blesi MA CH38: Pediatric Examinations", "url": "https://docs.google.com/forms/d/e/1FAIpQLScTu1osp_HqRQgrBDxBOVyuRMoBSfJqydrBAEzl_9KnzrHMJw/viewform"}, {"type": "link", "title": "Blesi MA CH38: Pediatric Examinations", "url": "https://docs.google.com/forms/d/e/1FAIpQLSfT0HGmCjobJEbRCDWmhr_df1JUleDE4_AO6HCQxex0QwrW3Q/viewform"}, {"type": "link", "title": "Blesi MA CH39: Geriatrics", "url": "https://docs.google.com/forms/d/e/1FAIpQLSdL7jtiYfj8DzOYQHeEB6c0fFs-KRVn3HWfIoPAmoFYwxJDgg/viewform"}, {"type": "link", "title": "Blesi MA CH40: Mental Health", "url": "https://docs.google.com/forms/d/e/1FAIpQLScqq0jDSzhcBuvkyPbusvg-iFCxvzchLnfg-5LkKnc-k1HMrA/viewform"}, {"type": "link", "title": "Blesi MA CH41: Physicians Office Laboratory", "url": "https://docs.google.com/forms/d/e/1FAIpQLSeNdtKmBopXGIHq4ZR6p2t1nO5fYrkk11doDfGlGTEsLbc6TA/viewform"}, {"type": "link", "title": "Blesi MA CH42: Specimen Collection & Processing", "url": "https://docs.google.com/forms/d/e/1FAIpQLSdnj0slxwzMdFSgtKy-KLWLbW3LnsV2dzE22Sbw0wiR1ga9GQ/viewform"}, {"type": "link", "title": "Blesi MA CH43: Blood Specimen Collection", "url": "https://docs.google.com/forms/d/e/1FAIpQLSdICo_BkVLO4wE9BM-gpcOhMxxA884NglbaErItSwXA1PDhTg/viewform"}, {"type": "link", "title": "Blesi MA CH44: Diagnostic Testing", "url": "https://docs.google.com/forms/d/e/1FAIpQLSeA043LDXQfEA5utj0MJmWqZxIP0TGY6LpuXuQZ2TrwCgraPA/viewform"}, {"type": "link", "title": "Blesi MA CH45: Cardiology Procedures", "url": "https://docs.google.com/forms/d/e/1FAIpQLSddoTSMAOd-fUlubGhgXnDUgxzCaQKcdOOWWDxscNRyvkfRWg/viewform"}, {"type": "link", "title": "Blesi MA CH46: Radiology Procedures", "url": "https://docs.google.com/forms/d/e/1FAIpQLSfWM6J8shczJ6MgRvON7RiM0fyePEeG56n8gcoI0q9Edhm8cw/viewform"}, {"type": "link", "title": "Blesi MA CH47: Preparing for Surgery", "url": "https://docs.google.com/forms/d/e/1FAIpQLSf-07mXppUt_bkeKS12FWoX4XV0vH-eV-vrO2k98OZCNMC_ww/viewform"}, {"type": "link", "title": "Blesi MA CH48: Assisting with Minor Surgery", "url": "https://docs.google.com/forms/d/e/1FAIpQLSdCxiZ14o-f64-6q5AJ-8HPYSDk6PPaV2Q9YBwlwz4g2zFS0A/viewform"}, {"type": "divider", "color": "#8E7CC3"}, {"type": "link", "title": "Blesi MA CH49: Pharmacology Fundamentals", "url": "https://docs.google.com/forms/d/e/1FAIpQLSf-ZUrju3aUHvcAsH4Rgbi5D5JXckAfbK-ziLwAxR8fpLTLtg/viewform"}, {"type": "link", "title": "Blesi MA CH50: Measurements & Dosage Calculations", "url": "https://docs.google.com/forms/d/e/1FAIpQLSfXfRfkZNVBJfk35ii6dKS143jfgVbtXf_pxoB_gGK78RptLA/viewform"}, {"type": "link", "title": "Blesi MA CH51-52: Administering Medications", "url": "https://docs.google.com/forms/d/e/1FAIpQLSejaHrzKuKuZj2JGVh5EFA9cC-wpvvwZvK3MNCmI50leS8-6Q/viewform"}, {"type": "divider", "color": "#E69138"}, {"type": "link", "title": "Blesi MA CH53: Emergency Procedures", "url": "https://docs.google.com/forms/d/e/1FAIpQLSfvb577V-nmN79BcS6wDG6eJJMdffpy-Xp7fJdPxdo7WtOCag/viewform"}, {"type": "link", "title": "Blesi MA CH54: First Aid for Accidents & Injuries", "url": "https://docs.google.com/forms/d/e/1FAIpQLSfd-O-dq53RBuTQfBYR_cTPZzTF_WRvGuoJJ9kSEJjzIo4EuQ/viewform"}, {"type": "link", "title": "Blesi MA CH55: Rehabilitation", "url": "https://docs.google.com/forms/d/e/1FAIpQLSd_eaQbC5DwfJnUOTN8-SH65rNgZRjid2f-Qfd3542STnp9xA/viewform"}, {"type": "link", "title": "Blesi MA CH56: Nutrition & Exercise", "url": "https://docs.google.com/forms/d/e/1FAIpQLSdGlK8WcAJKFYQToqHgeI7LPDTrDnwEATq4bViPwc4OODdoVQ/viewform"}, {"type": "link", "title": "Blesi MA CH57: Practicum & Job Search", "url": "https://docs.google.com/forms/d/e/1FAIpQLSf7pW3W7tfUdCRdd-I8ZZuD5b1xyXfJ3tHPxQBOQBtH_AeZjQ/viewform"}, {"type": "link", "title": "Blesi MA CH58: Office MGMT", "url": "https://docs.google.com/forms/d/e/1FAIpQLScoBfAiglTJzKRLZELzBM1zj8HWy342xlhD45-aUOLpEcIjhQ/viewform"}], "Kinns": [{"type": "link", "title": "Kinns MA CH01: Professional MA & Healthcare Team 49Q", "url": "https://docs.google.com/forms/d/e/1FAIpQLSeZ4sQVtLxY01K0tch5CbyXewdGeZXbS7jAhqKyuR-XMQMDNQ/viewform"}, {"type": "link", "title": "Kinns MA CH02: Therapeutic Communication 70Q", "url": "https://docs.google.com/forms/d/e/1FAIpQLSc_LF7TFZFgdhXWJ2aIZj6H7KBMvqWRqPv6IfKgYgrdoi1ujg/viewform"}, {"type": "divider", "color": "#6AA84F"}, {"type": "link", "title": "Kinns MA CH03: Legal Principles 115Q", "url": "https://docs.google.com/forms/d/e/1FAIpQLSdAekHm85b-JNMULKiiemhvLHgNSeOXC_oXoQ4R6aMvYrSVTQ/viewform"}, {"type": "link", "title": "Kinns MA CH04: Healthcare Laws 94Q", "url": "https://docs.google.com/forms/d/e/1FAIpQLSeOHhPxRwZfKXWxxiZ04buj0BYraqSYXZKhGUpWAGx-PQOIlQ/viewform"}, {"type": "link", "title": "Kinns MA CH05: Healthcare Ethics 81Q", "url": "https://docs.google.com/forms/d/e/1FAIpQLSdYlUsoajDIxvKU_h2atq6hDVM-tIbbYePep5-Ozo1pAjXLaw/viewform"}, {"type": "divider", "color": "#3C78D8"}, {"type": "link", "title": "Kinns MA CH06: Technology 61Q", "url": "https://docs.google.com/forms/d/e/1FAIpQLScvxgCgAjZ5Zs28AlYyeptUScwgh3DHgr5B_UGuTdYoxvNYsA/viewform"}, {"type": "link", "title": "Kinns MA CH07: Written Communication 63Q", "url": "https://docs.google.com/forms/d/e/1FAIpQLSceAnT9x9yFicvKmFggq0XjVYuxNCpBO7tbGp3umApJCXI8ig/viewform"}, {"type": "divider", "color": "#F1C232"}, {"type": "link", "title": "Kinns MA CH08: Telephone Techniques 53Q", "url": "https://docs.google.com/forms/d/e/1FAIpQLSeeB433TDSXvK7MciJxvHWPTsePVD8bK8oiJz-gB9E2QKWC_A/viewform"}, {"type": "link", "title": "Kinns MA CH09: Scheduling Appointments 49Q", "url": "https://docs.google.com/forms/d/e/1FAIpQLSdaHAGJlFAnIrAwULq9UVn8l9GA3eAq8UubXs_UQDIaRQmQ5Q/viewform"}, {"type": "divider", "color": "#8E7CC3"}, {"type": "link", "title": "Kinns MA CH10: Health Records 60Q", "url": "https://docs.google.com/forms/d/e/1FAIpQLSd6y8HwfFiugdNTM6_xVr2-AZUXh-9KpBagCcKdZFYn9xaZnA/viewform"}, {"type": "divider", "color": "#E69138"}, {"type": "link", "title": "Kinns MA CH11: Daily Operations and Safety 65Q", "url": "https://docs.google.com/forms/d/e/1FAIpQLSegkgBvRGjWVUy0sgEWKKsOorkywACWpOujVBanFymrYjwfDQ/viewform"}, {"type": "link", "title": "Kinns MA CH12: Health Insurance Essentials 55Q", "url": "https://docs.google.com/forms/d/e/1FAIpQLSf9WtLsZ4g-hRwF61087Vs3wPBLdDmQTRiGF9ZrExU8RxPiVQ/viewform"}, {"type": "link", "title": "Kinns MA CH13: Diagnostic Coding Essentials 50Q", "url": "https://docs.google.com/forms/d/e/1FAIpQLSdgBlfq5l8PgT0rlIVQgqFlHiAZytftEIBQ8xktVB0CFeIJIg/viewform"}, {"type": "link", "title": "Kinns MA CH14: Procedural Coding Essentials 50Q", "url": "https://docs.google.com/forms/d/e/1FAIpQLSdnnsw7qcNdszS33Ks78GYGe1edI_ZheP3ZBE82uMdGrBHEqA/viewform"}, {"type": "link", "title": "Kinns MA CH14: Procedural Coding Essentials 50Q", "url": "https://docs.google.com/forms/d/e/1FAIpQLScn-IeKCFkfd9VtD1SkwfpkWcbvWjpOGx9NI2GSInU8G5-ZTQ/viewform"}, {"type": "link", "title": "Kinns MA CH15: Medical Billing & Reimbursement 47Q", "url": "https://docs.google.com/forms/d/e/1FAIpQLSelnaQ6ONZdO5RvV1M2fF3XauKbxT5UmNRxZGdaZtUxnxhFVQ/viewform"}, {"type": "link", "title": "Kinns MA CH16: Patient Accounts & Practice MGMT 50Q", "url": "https://docs.google.com/forms/d/e/1FAIpQLSeDQEL0eP7-KzPAP3JT55ZI3VQBsQYmLFImROUYV0Q7wEDAYQ/viewform"}, {"type": "link", "title": "Kinns MA CH17: Advanced Roles in Admin 35Q", "url": "https://docs.google.com/forms/d/e/1FAIpQLSfXnv8XbGWCEwK6xN-OHGbyyFY4odmCzlYEE1Yb4bLjpoOMZA/viewform"}, {"type": "divider", "color": "#6AA84F"}, {"type": "link", "title": "Kinns MA CH18: Intro to Anatomy & MT 79Q", "url": "https://docs.google.com/forms/d/e/1FAIpQLSeiHK5zvMjg0t69yd04Cn3FsADCQ-_jg09PGNhS86T-D8r9Mw/viewform"}, {"type": "link", "title": "Kinns MA CH20: Vital Signs 63Q", "url": "https://docs.google.com/forms/d/e/1FAIpQLSfyWvTQirY0b7Vi7yXRzhfymOuPiPqWWeXiPbzqpHutSdVoxA/viewform"}, {"type": "link", "title": "Kinns MA CH21: Physical Examination 70Q", "url": "https://docs.google.com/forms/d/e/1FAIpQLScHipBsOBe6VOGOYHiHM1xFxKU3CUtPPQWkqw-LaH6gQ9ANVQ/viewform"}, {"type": "link", "title": "Kinns MA CH22: Patient Coaching 72Q", "url": "https://docs.google.com/forms/d/e/1FAIpQLSeoja4jO5CJQlMtcTuUugH33YYq0s2lhX-TePBGwcJVu1SGxw/viewform"}, {"type": "link", "title": "Kinns MA CH23: Nutrition and Health Promotion 84Q", "url": "https://docs.google.com/forms/d/e/1FAIpQLScxTGI3XBCNxHuV8EEMAzBVyDWnlRTt8pnfXfh1cdRkO_J_CQ/viewform"}, {"type": "link", "title": "Kinns MA CH24: Surgical Supplies & Instruments 53Q", "url": "https://docs.google.com/forms/d/e/1FAIpQLSeFgGz18__gqskD6Rb79JyYXU_dhSEBW_KCn_lHv31cfy0uIQ/viewform"}, {"type": "link", "title": "Kinns MA CH25: Assisting with Surgical Procedures  50Q", "url": "https://docs.google.com/forms/d/e/1FAIpQLSc31tC-kY7eXJus8zJykVfYV5wy0gTxwvhb9EHpfjNjm6NtrA/viewform"}, {"type": "link", "title": "Kinns MA CH26: Principles of Electrocardiography 100Q", "url": "https://docs.google.com/forms/d/e/1FAIpQLScA5_lrwaD_iDB4e3SZTZ1HwDwi0vpPCmAevgiAmJ0KvEMGbA/viewform"}, {"type": "link", "title": "Kinns MA CH27: Medical Emergencies 81Q", "url": "https://docs.google.com/forms/d/e/1FAIpQLScVw8fSFpMKVNa0lw6l7EnEHu1syrajNdVrMY7y9Fr8VsKTyg/viewform"}, {"type": "link", "title": "Kinns MA CH28: Principles of Pharmacology 101Q", "url": "https://docs.google.com/forms/d/e/1FAIpQLScRjUWVhaXXATfhlsqxMyc8f9MWsq31t_zgdymN0hXod_N0dA/viewform"}, {"type": "link", "title": "Kinns MA CH29: Pharmacology Math 76Q", "url": "https://docs.google.com/forms/d/e/1FAIpQLSepyt_c56y7fS_50cYvfzJSwuk1rsbJr902mjIlIyVfRAeCMg/viewform"}, {"type": "link", "title": "Kinns MA CH30: Administering Medications 80Q", "url": "https://docs.google.com/forms/d/e/1FAIpQLSceXOdsZ5io2AjIVqKs1ewe66RnDBYiK5phQxz1vod8ttKwVw/viewform"}, {"type": "link", "title": "Kinns MA CH31: Ophthalmology and Otolaryngology 49Q", "url": "https://docs.google.com/forms/d/e/1FAIpQLSdAxmvwZ88fM56khPMvuZ48Yw_j0V4I807r8JQOcc5338QsjQ/viewform"}, {"type": "link", "title": "Kinns MA CH32: Dermatology 50Q", "url": "https://docs.google.com/forms/d/e/1FAIpQLSdZF4KHpcOt5YFM4QrEGkH9TjQufYpcKdTOb7KF2aZBf_Soig/viewform"}, {"type": "link", "title": "Kinns MA CH33: Allergy & Infectious Disease", "url": "https://docs.google.com/forms/d/e/1FAIpQLSd23j_TT5PbqI4BNbPDG_7vjwP0ga-cbIl-vFcM7o6-sMkntA/viewform"}, {"type": "link", "title": "Kinns MA CH34: Gastroenterology 101Q", "url": "https://docs.google.com/forms/d/e/1FAIpQLSf75H03Sgxc8A7iUOJNuO6FWGfJlc180MSkULUxX8vOorWy-A/viewform"}, {"type": "link", "title": "Kinns MA CH35: Orthopedics & Rheumatology 104Q", "url": "https://docs.google.com/forms/d/e/1FAIpQLSeYhBStSeX16tnGlfcXNAlWp0T9BsCZrXhN9mK5J12oLiJtcg/viewform"}, {"type": "link", "title": "Kinns MA CH36: Neurology 119Q", "url": "https://docs.google.com/forms/d/e/1FAIpQLSfQJW8AoAKc-ySziEXDE7bIUYLYfBuWWV855RfRnEWoWQg4dA/viewform"}, {"type": "link", "title": "Kinns MA CH37: Behavioral Health 60Q", "url": "https://docs.google.com/forms/d/e/1FAIpQLSf1DvC22nVTPSB3gjSieo5aP-Ia3ufUc38BO1ClnQnsMQoQoA/viewform"}, {"type": "link", "title": "Kinns MA CH38: Endocrinology 105Q", "url": "https://docs.google.com/forms/d/e/1FAIpQLSc0i_-61WWRLVcUbXZ4taUwLPULK8pBBF6tg0biOO86UOm66w/viewform"}, {"type": "link", "title": "Kinns MA CH39: Cardiology 141Q", "url": "https://docs.google.com/forms/d/e/1FAIpQLScKbvyGlXaRLlUt9v8qqqaCpDoQfui7J7ibPVJK6Q_5XuQv8A/viewform"}, {"type": "link", "title": "Kinns MA CH40: Pulmonology 95Q", "url": "https://docs.google.com/forms/d/e/1FAIpQLSfIdpe03xoNi1P9ImWxyNNmxpf0JFU-dxWktZoGv02xhs8LDg/viewform"}, {"type": "link", "title": "Kinns MA CH41: Urology & Male Reproduction 110Q", "url": "https://docs.google.com/forms/d/e/1FAIpQLSc7O__dQamUwJYsJHbwNzRxqoNvEvi6E00N5xhXU7DzBeSZXQ/viewform"}, {"type": "link", "title": "Kinns MA CH42: Obstetrics & Gynecology 50Q", "url": "https://docs.google.com/forms/d/e/1FAIpQLSd4vdPJH6wD17Zy-_ZduFr3BqekmcQ3Hg4P1LzkJGPgF_slZg/viewform"}, {"type": "link", "title": "Kinns MA CH43: Pediatrics 54Q", "url": "https://docs.google.com/forms/d/e/1FAIpQLSdt5NV6uvB1r6bAU2IYosPUgFQYG8wCchCbdhCSa-ZWH5CT3Q/viewform"}, {"type": "link", "title": "Kinns MA CH44: Geriatrics 50Q", "url": "https://docs.google.com/forms/d/e/1FAIpQLSf1MqfRDbo6Y7Yd9e2ATlZY34Tl7npRaEtkHqv9m6t_fCpcYw/viewform"}, {"type": "link", "title": "Kinns MA CH45: Intro To Clinical Lab 59Q", "url": "https://docs.google.com/forms/d/e/1FAIpQLSeKRTNcXLz1mnMxLMBVAqMcRk7HERgijJkB_p0T6jIvKOLg6g/viewform"}, {"type": "link", "title": "Kinns MA CH46: Urinalysis 55Q", "url": "https://docs.google.com/forms/d/e/1FAIpQLSev4wZy15IjcWDA8ip9cEbPsJGeWBtyp6RsZZTtrQWS8JJ1sw/viewform"}, {"type": "divider", "color": "#3C78D8"}, {"type": "link", "title": "Kinns MA CH47: Blood Collection 62Q", "url": "https://docs.google.com/forms/d/e/1FAIpQLSeuEbMosQvgBa0K0rXxQ6dJk9TPvcovpMRlAO9oYGzfvsexVQ/viewform"}, {"type": "link", "title": "Kinns MA CH48: Analysis of Blood 56Q", "url": "https://docs.google.com/forms/d/e/1FAIpQLSd_7AO9qZZKAqg6JH8wbFGyYil0PfC2WjLG8IChBixFEh00EQ/viewform"}, {"type": "link", "title": "Kinns MA CH49: Microbiology & Immunology 52Q", "url": "https://docs.google.com/forms/d/e/1FAIpQLSeUXNVVLdheGQVmvbXoN6bSgA3gS9LIBuvlE6oYiNiKcQLu4g/viewform"}, {"type": "link", "title": "Kinns MA CH50: Professional Skills & Strategies 77Q", "url": "https://docs.google.com/forms/d/e/1FAIpQLSfadnBGnsRXAwb7jnG6zNbBox3_0Lx8M0AaPUecBy0VXQEXMg/viewform"}]};
+  const state = {
+    tab: "Blesi",
+    q: ""
+  };
+
+  const q = document.getElementById("q");
+  const list = document.getElementById("list");
+  const title = document.getElementById("title");
+  const count = document.getElementById("count");
+  const clearBtn = document.getElementById("clear");
+  const tabs = Array.from(document.querySelectorAll(".tab"));
+
+  function normalize(s) {
+    return (s || "").toString().toLowerCase().trim();
+  }
+
+  function render() {
+    const items = DATA[state.tab] || [];
+    const query = normalize(state.q);
+
+    title.textContent = state.tab;
+
+    list.innerHTML = "";
+    let shown = 0;
+
+    for (const it of items) {
+      if (it.type === "divider") {
+        // dividers are shown only if we're not filtering (keeps search clean)
+        if (!query) {
+          const d = document.createElement("div");
+          d.className = "divider";
+          if (it.color) d.style.background = it.color;
+          list.appendChild(d);
+        }
+        continue;
+      }
+
+      const t = it.title || "";
+      const u = it.url || "";
+
+      if (query && !normalize(t).includes(query)) continue;
+
+      const row = document.createElement("div");
+      row.className = "item";
+
+      const a = document.createElement("a");
+      a.href = u || "#";
+      a.target = "_blank";
+      a.rel = "noopener noreferrer";
+      a.textContent = t;
+      row.appendChild(a);
+list.appendChild(row);
+
+      shown++;
+    }
+
+    const totalLinks = items.filter(x => x.type === "link").length;
+    count.textContent = `${shown} / ${totalLinks}`;
+  }
+
+  function setTab(name) {
+    state.tab = name;
+    tabs.forEach(t => {
+      const sel = t.dataset.tab === name;
+      t.setAttribute("aria-selected", sel ? "true" : "false");
+      t.tabIndex = sel ? 0 : -1;
+    });
+    render();
+  }
+
+  tabs.forEach(t => {
+    t.addEventListener("click", () => setTab(t.dataset.tab));
+    t.addEventListener("keydown", (e) => {
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        setTab(t.dataset.tab);
+      }
+    });
+  });
+
+  q.addEventListener("input", () => {
+    state.q = q.value;
+    render();
+  });
+
+  clearBtn.addEventListener("click", () => {
+    q.value = "";
+    state.q = "";
+    q.focus();
+    render();
+  });
+
+  render();
+</script>
+</body>
+</html>
