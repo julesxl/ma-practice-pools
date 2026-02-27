@@ -5,13 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>MA Practice Question Pools</title>
   <style>
-    header {
-  position: sticky;
-  top: 0;
-  background: var(--bg);
-  border-bottom: 1px solid var(--border);
-}
-    :root {
+:root {
       --bg: #ffffff;
       --panel: #ffffff;
       --panel2: #ffffff;
@@ -36,7 +30,16 @@
     }
     .wrap { max-width: var(--max); margin: 0 auto; padding: 16px; }
 
-    h1 { margin:0; font-size: 18px; letter-spacing: .2px; }
+    
+
+    /* Mobile safe-area padding so the rightmost control (Clear) doesn't hug the screen edge */
+    header .wrap{
+      padding-top: 16px;
+      padding-bottom: 16px;
+      padding-left: calc(16px + env(safe-area-inset-left));
+      padding-right: calc(16px + env(safe-area-inset-right));
+    }
+h1 { margin:0; font-size: 18px; letter-spacing: .2px; }
         .bar {
       display:flex;
       align-items:center;
