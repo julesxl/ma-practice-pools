@@ -19,7 +19,7 @@
       --max: 980px;
     }
 * { box-sizing: border-box; }
-    body {
+body {
       margin:0; font: 15px/1.45 system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
       background: var(--bg); color: var(--text);
     }
@@ -32,21 +32,19 @@
 
     
 
-    /* Mobile safe-area padding so the rightmost control (Clear) doesn't hug the screen edge */
-   header .wrap{
+    /* Header padding (incl. mobile safe-area): keeps the rightmost control (Clear) off the edge */
+header .wrap{
+  box-sizing: border-box;
   padding-top: 16px;
   padding-bottom: 16px;
 
-  /* stronger visual breathing room */
-  padding-left: 24px;
-  padding-right: 24px;
-
-  /* add safe-area on top (iPhone notch/rounded corners) */
-  padding-left: calc(24px + env(safe-area-inset-left));
+  /* visual breathing room + iPhone safe-area (notch/rounded corners) */
+  padding-left:  calc(24px + env(safe-area-inset-left));
   padding-right: calc(24px + env(safe-area-inset-right));
 }
+
 h1 { margin:0; font-size: 18px; letter-spacing: .2px; }
-        .bar {
+    .bar {
       display:flex;
       align-items:center;
       gap:12px;
@@ -65,7 +63,9 @@ h1 { margin:0; font-size: 18px; letter-spacing: .2px; }
       align-items:center;
       flex-wrap:nowrap;
       margin-left:auto;           /* push search+clear to the right */
+      min-width: 0;
     }
+
 input[type="search"]{
   flex: 1 1 auto;      /* take remaining space */
   width: auto;         /* override min(520px, 88vw) */
