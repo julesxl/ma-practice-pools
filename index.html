@@ -33,12 +33,18 @@
     
 
     /* Mobile safe-area padding so the rightmost control (Clear) doesn't hug the screen edge */
-    header .wrap{
-      padding-top: 16px;
-      padding-bottom: 16px;
-      padding-left: calc(16px + env(safe-area-inset-left));
-      padding-right: calc(16px + env(safe-area-inset-right));
-    }
+   header .wrap{
+  padding-top: 16px;
+  padding-bottom: 16px;
+
+  /* stronger visual breathing room */
+  padding-left: 24px;
+  padding-right: 24px;
+
+  /* add safe-area on top (iPhone notch/rounded corners) */
+  padding-left: calc(24px + env(safe-area-inset-left));
+  padding-right: calc(24px + env(safe-area-inset-right));
+}
 h1 { margin:0; font-size: 18px; letter-spacing: .2px; }
         .bar {
       display:flex;
