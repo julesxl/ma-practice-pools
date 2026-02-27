@@ -170,8 +170,7 @@ input[type="search"]{
       </div>
       <div class="controls">
         <input id="q" type="search" placeholder="Search..." autocomplete="off" />
-        <button class="btn" id="clear" title="Clear search">Clear</button>
-      </div>
+</div>
     </div>
   </div>
 </header>
@@ -199,7 +198,6 @@ input[type="search"]{
   const list = document.getElementById("list");
   const title = document.getElementById("title");
   const count = document.getElementById("count");
-  const clearBtn = document.getElementById("clear");
   const tabs = Array.from(document.querySelectorAll(".tab"));
 
   function normalize(s) {
@@ -274,14 +272,6 @@ list.appendChild(row);
     state.q = q.value;
     render();
   });
-
-  clearBtn.addEventListener("click", () => {
-    q.value = "";
-    state.q = "";
-    q.focus();
-    render();
-  });
-
   render();
 </script>
 </body>
